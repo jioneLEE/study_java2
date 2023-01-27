@@ -116,23 +116,15 @@ public class AccountDAO {
 	
 	public void deposit(Client c) {
 		if(!haveNoAcc(c)) {return;}
-		String choiceAcc = null;
-		String youAcc = null;
-		while (true) {
-			choiceAcc = Util.getStringValue("본인의 계좌번호 입력 >>");
-			if(checkAcc(choiceAcc, c,"my")) {break;}
-		}
-		
-		while(true) {
-			youAcc = Util.getStringValue("이체 계좌번호 입력 >>");
-			if(checkAcc(choiceAcc, c,"you")) {break;}
-		}
+		String myAcc = null;
 		int money = -1;
-		while(money == -1){
-		money = Util.getSel("이체금액입력>>[1,000 - 1,000,000]", 1000, 1000000);
+		while (true) {
+			myAcc = Util.getStringValue("본인의 계좌번호 입력 >>");
+			if(checkAcc(myAcc, c,"my")) {break;}
 		}
-		
-		
+		while(money == -1){
+		money = Util.getSel("입금금액입력>>[1,000 - 1,000,000]", 1000, 1000000);
+		}
 	}
 
 	public void withdrawal(Client c) {
@@ -194,6 +186,14 @@ public class AccountDAO {
 	}
 	public void myPage(Client c) {
 		if(!haveNoAcc(c)) {return;}
+		System.out.println("==="+c+"님의 MyPage===");
+		for(int i=0; i<accountList.size(); i++) {
+			if(accountList.get(i).getClientNo() == c.getClientNo()) {
+				System.out.println(accountList.get(i));
+			}
+		}
+		System.out.println("============================");
+
 	}
 
 }

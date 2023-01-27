@@ -90,7 +90,16 @@ public class BankController {
 						accountDAO.dropOut(clientInfo);
 					}
 					else if (logSel == 7) {
-						accountDAO.myPage(clientInfo);
+						while (true) {
+							accountDAO.myPage(clientInfo);
+							String info = "[1] 비밀번호 수정\n" + "[0] 뒤로가기";
+							int choice = Util.getSel(info, 0, 1);
+							if (choice == 1) {
+
+							} else if (choice == 0) {
+								break;
+							}
+						}
 					}
 					else if (logSel == 0) {
 						break;
