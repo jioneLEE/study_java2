@@ -1,18 +1,18 @@
 package ATM;
 
 public class Client {
-	int clientNo;
-	String id;
-	String pw;
-	String name;
+	private int clientNo = 1000;
+	private String id;
+	private String pw;
+	private String name;
 	
-	public Client(int clientNo, String id, String pw, String name) {
+	public Client(int num, String id, String pw, String name) {
 		super();
 //		this.clientNo = clientNo;
 //		this.id = id;
 //		this.pw = pw;
 //		this.name = name;
-		setClientNo(clientNo);
+		setClientNo(num);
 		setId(id);
 		setPw(pw);
 		setName(name);
@@ -22,8 +22,8 @@ public class Client {
 	public int getClientNo() {
 		return clientNo;
 	}
-	private void setClientNo(int clientNo) {
-		this.clientNo = clientNo;
+	private void setClientNo(int num) {
+		this.clientNo += num;
 	}
 	public String getId() {
 		return id;
@@ -46,7 +46,7 @@ public class Client {
 
 	@Override
 	public String toString() {
-		return clientNo + "  " + id + "  " + pw + "  " + name ;
+		return clientNo + "/" + id + "/" + pw + "/" + name ;
 	}
 	
 	

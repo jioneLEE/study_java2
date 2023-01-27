@@ -13,7 +13,7 @@ public class StudentDAO {
 
 	private int addnum() {
 		num++;
-		return num;
+		return 0;
 	}
 	
 	static boolean isStudentList() {

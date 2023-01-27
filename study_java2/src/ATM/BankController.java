@@ -33,20 +33,20 @@ public class BankController {
 
 				if (mgSel == 1) {
 				}
-				if (mgSel == 2) {
+				else if (mgSel == 2) {
 				}
-				if (mgSel == 3) {
+				else if (mgSel == 3) {
 				}
-				if (mgSel == 4) {
+				else if (mgSel == 4) {
 				}
-				if (mgSel == 5) {
+				else if (mgSel == 5) {
 				}
-				if (mgSel == 0) {
+				else if (mgSel == 0) {
 					break;
 				}
 				}
 			}
-			if (sel == 2) {
+			else if (sel == 2) {
 				while(true) {
 				String user = "[사용자 화면]\n" + "[1] 회원가입\n" + "[2] 로그인\n" + "[0] 뒤로가기";
 				System.out.println(user);
@@ -55,12 +55,16 @@ public class BankController {
 					usSel = util.getSel("[0 ~ 2]매뉴입력", 0, 2);
 				}
 				if (usSel == 1) {
+					clientDAO.membershipRegistration();
 				}
-				if (usSel == 2) {
+				else if (usSel == 2) {
+					if(!ClientDAO.anyMembers()) {continue;}
+					Client clientInfo = clientDAO.CheckLogin();
+					if(clientInfo == null) {continue;}
 					while(true) {
-					String loginSucess = "[로그인 성공]\n" + "[1] 계좌 추가\n" + "[2] 계좌 삭제\n" + "[3] 입금\n" + "[4] 출금\n"
+					String loginSucess = "[1] 계좌 추가\n" + "[2] 계좌 삭제\n" + "[3] 입금\n" + "[4] 출금\n"
 							+ "[5] 이체\n" + "[6] 탈퇴\n" + "[7] 마이페이지: 전체 계좌, 금액 (회원정보: 비밀번호 수정)\n" + "[0] 뒤로가기";
-					System.out.println(loginSucess);
+					System.out.println(clientInfo+"--- 로그인\n"+loginSucess);
 
 					int logSel = -1;
 					while (logSel == -1) {
@@ -68,30 +72,37 @@ public class BankController {
 					}
 
 					if (logSel == 1) {
+						accountDAO.addAccount(clientInfo);
 					}
-					if (logSel == 2) {
+					else if (logSel == 2) {
+						accountDAO.delAccount(clientInfo);
 					}
-					if (logSel == 3) {
+					else if (logSel == 3) {
+						accountDAO.deposit(clientInfo);
 					}
-					if (logSel == 4) {
+					else if (logSel == 4) {
+						accountDAO.withdrawal(clientInfo);
 					}
-					if (logSel == 5) {
+					else if (logSel == 5) {
+						accountDAO.transfer(clientInfo);
 					}
-					if (logSel == 6) {
+					else if (logSel == 6) {
+						accountDAO.dropOut(clientInfo);
 					}
-					if (logSel == 7) {
+					else if (logSel == 7) {
+						accountDAO.myPage(clientInfo);
 					}
-					if (logSel == 0) {
+					else if (logSel == 0) {
 						break;
 					}
 					}
 				}
-				if (usSel == 0) {
+				else if (usSel == 0) {
 					break;
 				}
 			}
 		}
-			if (sel == 0) {
+			else if (sel == 0) {
 				System.out.println("[종료 되었습니다.]");
 				break;
 			}

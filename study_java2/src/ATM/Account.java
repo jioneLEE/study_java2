@@ -32,13 +32,13 @@ public class Account {
 	public int getMoney() {
 		return money;
 	}
-	private void setMoney(int money) {
+	public void setMoney(int money) {
 		this.money = money;
 	}
 
 	@Override
 	public String toString() {
-		return clientNo + "  " + accountNumber + "  " + money;
+		return clientNo + "/" + accountNumber + "/" + money;
 	}
 	
 	

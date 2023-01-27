@@ -25,4 +25,21 @@ public class Util {
 
 		return sel;
 	}
+	
+	
+	static String getStringValue(String msg) {
+		System.out.println(msg);
+		return sc.next();
+		
+	}
+	
+	static int getMoney(String msg) {
+		System.out.println(msg);
+		return sc.nextInt();
+	}
+	
+	
+	
+	
+	
 }
